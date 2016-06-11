@@ -1,12 +1,10 @@
 version: "2"
-
 # A Docker Compose file for configuration of the development environment
 
 services:
   # load balancer
   nginx-lb:
-    #image: docker-nginx-lb:demo
-    image: hq.hoplasoftware.com:7443/jramirez/hopla-loadbalancer:demo
+    image: hopla/alpine-docker-nginx-lb:demo
     container_name: nginx-lb
     restart: unless-stopped
     networks:
@@ -15,8 +13,7 @@ services:
       - "8181:80"
 
   simplest-nodeapp:
-    #image: alpine-docker-simplest-nodeapp:demo
-    image: hq.hoplasoftware.com:7443/jramirez/hopla-simplest-nodeapp:demo
+    image: hopla/alpine-docker-simplest-nodeapp:demo
     restart: unless-stopped
     networks:
        simplest-nodeapp-lb-demo-net:
